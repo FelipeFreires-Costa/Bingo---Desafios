@@ -4,7 +4,6 @@ let numerosSorteados = []
 //funçao para sortear os numero sem repetir
 function sortearNumeroSemRepetir() {
 
-
   //se o tamanho do array for 72 para de sortear 
   if (numerosSorteados.length === 75) {
     return "acabaram os numeros"
@@ -47,9 +46,11 @@ function mostrarSorteados() {
     O: []
   }
 
+  //enquanto i for menor ao tanto de numeros dentro do array
   for (let i = 0; i < numerosSorteados.length; i++) {
     let numero = numerosSorteados[i]
 
+    //se a pedra (numero) for maior ou igual a 1 e menor ou igual a 15, vai ser colocado no array da letra B
     if(numero >= 1 && numero <= 15){
       organizados.B.push(numero)
     }else if(numero >= 16 && numero <= 30){
@@ -63,6 +64,7 @@ function mostrarSorteados() {
     }
   }
 
+  //para cada letra dentro do objeto organizados, acesse a lista dessa letra e ordene os numeros de menor para maior
   for(let letra in organizados){
     organizados[letra].sort((a, b) => a - b)
   }
@@ -70,10 +72,21 @@ function mostrarSorteados() {
   return organizados
 }
 
-for(let i = 0; i < 20; i++){
+function verificarCartela(cartela, numero){
+  if(numero >= 1 && numero <= 15){
+
+  }
+}
+
+
+for(let i = 0; i < 25; i++){
   sortearNumeroSemRepetir()
 }
 
 
+const sorteios = numerosSorteados
+console.log(sorteios)
+
 const cartela = mostrarSorteados()
 console.log(cartela)
+
