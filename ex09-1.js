@@ -1,6 +1,5 @@
 //meu desafio vai ser, fazer uma funçao para sorteador 75 numeros
 //outra funçao para criar uma cartela com numeros aleatorios, e limitar cada coluna com 5 indice
-
 let numerosSorteados = {
   B: [],
   I: [],
@@ -11,7 +10,9 @@ let numerosSorteados = {
 
 function sortearNumeros() {
 
-  if (numerosSorteados.B.length + numerosSorteados.I.length + numerosSorteados.N.length + numerosSorteados.G.length + numerosSorteados.O.length === 75) {
+  const totalSorteado = numerosSorteados.B.length + numerosSorteados.I.length + numerosSorteados.N.length + numerosSorteados.G.length + numerosSorteados.O.length
+
+  if (totalSorteado === 75) {
     return "todos os numeros sorteados"
   }
 
@@ -19,7 +20,18 @@ function sortearNumeros() {
   let numero
   do {
     numero = Math.floor(Math.random() * 75) + 1
-  } while (numerosSorteados.B.includes(numero) || numerosSorteados.I.includes(numero) || numerosSorteados.N.includes(numero) || numerosSorteados.G.includes(numero) || numerosSorteados.O.includes(numero))
+
+    const todos = [
+      ...numerosSorteados.B,
+      ...numerosSorteados.I,
+      ...numerosSorteados.N,
+      ...numerosSorteados.G,
+      ...numerosSorteados.O,
+    ]
+    if(!todos.includes(numero)){
+      break
+    }
+  } while (true)
 
   let letra
 
