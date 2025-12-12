@@ -5,7 +5,7 @@ let numerosSorteados = []
 function sortearNumeroSemRepetir() {
 
 
-  //se o tamanho do array for 72 para de sortear 
+  //se o tamanho do array for 75 para de sortear 
   if (numerosSorteados.length === 75) {
     return "acabaram os numeros"
   }
