@@ -79,13 +79,62 @@ return cartela
 }
 
 
-for (let i = 1; i <= 40; i++) {
+function marcarCartela(cartela, sorteados){
+  const letras = ["B", "I", "N", "G", "O"]
+
+  for(let i = 0; i < letras.length; i++){
+    const letra = letras[i]
+    const coluna = cartela[letra]
+
+    for(let j = 0; j < coluna.length; j++){
+      const numero = coluna[j]
+
+      if(numero === null){
+        continue
+      }
+
+      if (verificarNumero(numero, sorteados)) {
+        coluna[j] = 'X'
+      }
+
+      if(numero === "X"){
+        continue
+      }
+      
+    }
+  }
+}
+
+function verificarNumero(numero, sorteados){
+  let letra
+  
+  if (numero >= 1 && numero <= 15) {
+    letra = 'B'
+  } else if (numero <= 30) {
+    letra = 'I'
+  } else if (numero <= 45) {
+    letra = 'N'
+  } else if (numero <= 60) {
+    letra = 'G'
+  } else {
+    letra = 'O'
+  }
+
+  return sorteados[letra].includes(numero)
+}
+
+console.log('SUA CARTELA:')
+const cartelaCompleta = gerarCartela()
+console.table(cartelaCompleta)
+
+for (let i = 1; i <= 20; i++) {
   sortearNumeros()
 }
 const sorteados = numerosSorteados
 console.log('NUMEROS SORTEADOS:')
 console.table(sorteados)
 
-console.log('SUA CARTELA:')
-const cartelaCompleta = gerarCartela()
+marcarCartela(cartelaCompleta, numerosSorteados)
+console.log('CARTELA MARCADA')
 console.table(cartelaCompleta)
+
